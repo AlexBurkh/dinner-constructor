@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    static DinnerConstructor dc;
+    static DinnerConstructor dc = new DinnerConstructor();
     static Scanner scanner;
 
     public static void main(String[] args) {
@@ -40,8 +40,7 @@ public class Main {
         String dishType = scanner.nextLine();
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
-
-        // добавьте новое блюдо
+        dc.addDishToMenu(dishType, dishName);
     }
 
     private static void generateDishCombo() {
