@@ -12,6 +12,19 @@ public class DinnerConstructor {
         this.random = new Random();
     }
 
+    public boolean checkType(String requestedDishType) {
+        for (var existingDishType : dinnerMenu.keySet()) {
+            if (requestedDishType.equals(existingDishType)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isEmpty() {
+        return dinnerMenu.isEmpty();
+    }
+
     public void addDishToMenu(String dishType, String dishName) {
         var dishes = dinnerMenu.get(dishType);
         if (dishes != null) {
@@ -20,15 +33,6 @@ public class DinnerConstructor {
             dinnerMenu.put(dishType, new ArrayList<>());
             addDishToMenu(dishType, dishName);
         }
-    }
-
-    public boolean contains(String requestedDishType) {
-        for (var existingDishType : dinnerMenu.keySet()) {
-            if (requestedDishType.equals(existingDishType)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public ArrayList<String> generateDinner(ArrayList<String> dishTypes) {

@@ -46,6 +46,10 @@ public class Main {
     }
 
     private static void generateDishCombo() {
+        if (dc.isEmpty()) {
+            System.out.println("В меню пока нет ни одной позиции. Пожалуйста, добавьте их.");
+            return;
+        }
         System.out.println("Начинаем конструировать обед...");
         System.out.println("Введите количество наборов, которые нужно сгенерировать:");
         int numberOfCombos = scanner.nextInt();
@@ -55,14 +59,15 @@ public class Main {
                 "ввода введите пустую строку");
         String nextItem = scanner.nextLine();
         while (!nextItem.isEmpty()) {
-            if (dc.contains(nextItem)) {
+            if (dc.checkType(nextItem)) {
                 dishTypes.add(nextItem);
-                nextItem = scanner.nextLine();
             } else {
                 System.out.println("Такого типа блюд нет, введите другой тип");
             }
+            nextItem = scanner.nextLine();
         }
         for (int i = 0; i < numberOfCombos; i++) {
+            System.out.println("Комбо 1");
             System.out.println(dc.generateDinner(dishTypes));
         }
     }
